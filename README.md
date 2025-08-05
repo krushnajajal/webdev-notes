@@ -5,3 +5,5 @@ Day-1
 notes on Django basics
 Day-2 
 starting a Django project
+Day 3
+notes on Django Apps & Migrations
