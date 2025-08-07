@@ -30,3 +30,17 @@ Activating the Admin: To make a model appear in the admin site, you must registe
 Today I learned how Django knows which view to execute for a specific web address. This is handled by the **`urls.py`** file.
 
 * **Purpose**: The `urls.py` file is the website's "address book" or GPS
+
+
+**Day 5: Views & Templates**
+
+Today was about building the public-facing pages of the website by connecting logic with presentation.
+
+* **Views (`views.py`)**: A view is a Python function that acts as the "chef." It receives a user's web request, fetches data from the **Model** (the pantry), and passes that data to a template.
+* **Templates (`templates/` folder)**: A template is an HTML file that acts as the "plating." It receives data from the **View** and uses the **Django Template Language (DTL)** to display it.
+    * `{{ variable }}` is used to display a variable's value.
+    * `{% for item in list %}` is used for logic, like loops.
+* **The `render()` function** is the bridge that combines a template with data from a view to produce the final HTML page.
+
+---
+
