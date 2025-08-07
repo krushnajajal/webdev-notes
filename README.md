@@ -43,4 +43,20 @@ Today was about building the public-facing pages of the website by connecting lo
 * **The `render()` function** is the bridge that combines a template with data from a view to produce the final HTML page.
 
 ---
+ **Day 6: URL Routing**
+Today I learned how Django knows which view to execute for a specific web address. This is handled by the **`urls.py`** file.
+
+* **Purpose**: The `urls.py` file is the website's "address book" or GPS. It contains a list of URL patterns and maps each one to a specific view function.
+* **The `urlpatterns` list**: This is a Python list that holds all the URL routes for your app.
+* **The `path()` function**: Each route is defined using `path()`.
+    ```python
+    from django.urls import path
+    from . import views
+
+    urlpatterns = [
+        # When a user visits '/blog/', run the post_list view.
+        path('blog/', views.post_list, name='post_list_page'),
+    ]
+    ```
+This tells Django exactly what to do when a user navigates to a specific page on your site.
 
