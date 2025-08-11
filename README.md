@@ -60,3 +60,14 @@ Today I learned how Django knows which view to execute for a specific web addres
     ```
 This tells Django exactly what to do when a user navigates to a specific page on your site.
 
+
+**Day 7: Handling User Input with Forms**
+
+Today I learned how Django handles HTML forms to accept and process user input securely.
+
+* **Django Forms**: The framework provides a `Form` class that represents an HTML form. It handles rendering the form fields, validating submitted data, and cleaning it up for use in your views.
+* **`ModelForm`**: A powerful subclass of `Form` that automatically creates a form based on an existing **Model**. This saves you from having to redefine the form fields if they are the same as your model's fields.
+* **Rendering a Form**: In a view, you create an instance of your form class and pass it to the template. In the template, you can render the entire form with all its fields and labels using a single tag, like `{{ form.as_p }}`.
+* **Validation**: When a user submits a form, you can call `form.is_valid()` in your view. Django automatically runs validation checks (e.g., ensuring an email field looks like an email) and reports any errors.
+
+
