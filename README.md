@@ -70,4 +70,63 @@ Today I learned how Django handles HTML forms to accept and process user input s
 * **Rendering a Form**: In a view, you create an instance of your form class and pass it to the template. In the template, you can render the entire form with all its fields and labels using a single tag, like `{{ form.as_p }}`.
 * **Validation**: When a user submits a form, you can call `form.is_valid()` in your view. Django automatically runs validation checks (e.g., ensuring an email field looks like an email) and reports any errors.
 
+---
 
+### **Day 8: Forms, Static Files & Project Wrap-up**
+
+Today is the final day of my foundational Django study. I'm combining the last key topics: handling user input with **Forms** and adding styles and scripts with **Static Files**.
+
+#### 1. Handling User Input with Forms
+
+Django provides a secure and efficient way to manage HTML forms.
+
+* **Purpose**: Forms are used to collect data from users, such as in a contact form, a search bar, or a user registration page. Django's form system handles rendering the form fields, validating the submitted data, and cleaning it for use.
+* **Creating a Form**: You define the form's fields in a `forms.py` file.
+    ```python
+    # forms.py
+    from django import forms
+
+    class ContactForm(forms.Form):
+        name = forms.CharField(max_length=100)
+        email = forms.EmailField()
+        message = forms.CharField(widget=forms.Textarea)
+    ```
+* **Using it in a View**: The view handles the logic for both displaying the empty form and processing the submitted data.
+    ```python
+    # views.py
+    def contact_view(request):
+        if request.method == 'POST':
+            form = ContactForm(request.POST)
+            if form.is_valid():
+                # Process the data, e.g., send an email
+                print(form.cleaned_data)
+                return redirect('/success/')
+        else:
+            form = ContactForm()
+        return render(request, 'contact.html', {'form': form})
+    ```
+
+#### 2. Styling with Static Files
+
+**Static files** are the CSS, JavaScript, and image files that make a website look good and feel interactive.
+
+* **Configuration**: You tell Django where your static files are by setting `STATIC_URL` and `STATICFILES_DIRS` in `settings.py`. Typically, you create a `static` folder in your app's directory.
+* **Using in a Template**: To link to a static file, you must first load the static tag library and then use the `static` tag.
+    ```html
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+
+    <img src="{% static 'images/logo.png' %}">
+    ```
+
+#### 3. Wrap-up & Next Steps
+
+This week covered the essentials of building a Django application. The core concepts of **MVT, URL routing, forms, and static files** are the foundation for any project.
+
+The journey doesn't end here. The next logical steps are:
+* **Building a Full Project**: Apply these concepts to build a complete blog or to-do list application.
+* **Django REST Framework (DRF)**: Learn how to build APIs with Django.
+* **Deployment**: Learn how to put your application on a real web server for the world to see.
+
+With this, my initial study week is complete. I'm ready to start building! 🚀
